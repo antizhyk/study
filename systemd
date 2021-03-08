@@ -1,0 +1,5 @@
+service <service name> status  - просмотреть текущий статус службы
+service <service name> stop - остановить службу
+service <service name> start -  запустить службу
+service <service name> restart - полностью перезапустить службу (альтернатива stop + start)
+service <service name> reload - перезагрузить (если служба поддерживает) конфигурацию службы.
