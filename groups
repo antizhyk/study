@@ -1,0 +1,25 @@
+1. Права на исполнение файла группе "staff":
+
+Дать права группе "staff":
+chown :staff /home/user/scripts/script.sh
+Дать права на запуск группе:
+chmod g+x /home/user/scripts/script.sh
+Дать права на запуск всем (в том числе группе):
+chmod a+x /home/user/scripts/script.sh
+
+2. Право на изменение файла пользователю "user":
+chown user /home/user/scripts/script.sh
+chmod u+rw /home/user/scripts/script.sh
+
+3. Право на чтение файла группе "staff":
+chown :staff /home/user/scripts/script.sh
+chmod g+r /home/user/scripts/script.sh
+
+4. Право на изменение и создание файлов в каталоге ~/scripts группе "staff":
+chown -R :staff /home/user/scripts
+chmod -R g+rw /home/user/scripts
+
+
+Подробности здесь:
+man chown
+man chmod

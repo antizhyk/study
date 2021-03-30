@@ -1,0 +1,9 @@
+WORKDIR /var/www/html УКАЗЫВАЕМ РАБОЧУЮ ДИРЕКТОРИЮ В КОТОРОЙ ЗАТЕМ БУДУТ ПРОИСХОДИТЬ ВСЕ ОПЕРАЦИИ
+RUN rm -f /docker-entrypoint.sh && rm -f /usr/local/etc/php-fpm.d/* \ УДАЛЯЕМ СКРИПТЫ, УДАЛЯЕМ СТАРОГО ПОЛЬЗОВАТЕЛЯ (ПОСРЕДСТВОМ УДАЛЕНИЯ ЕГО ПАПКИ) СОЗДАЕМ ПАПКУ НОВОГО ПОЛЬЗОВАТЕЛЯ, ДАЕМ ЕЙ ПОЛНЫЙ 
+    && rm -rf /home/user && mkdir /home/user && chmod 777 /home/user ДОСТУП (777)
+RUN adduser -S -D -h /home/user -u 501 yan-devit yan-devit СОЗДАЕМ НОВОГО СИСТЕМНОГО ПОЛЬЗОВАТЕЛЯ, БЕЗ ПАРОЛЯ, НАЗАНЧАЕМ РАБОЧУЮ ПАПКУ СОЗДАЮ РАНЕЕ ДАЕМ ID (МОЖНО ПРПУСТИТЬ ТАК КАК У НАС ПО УМОЛЧАНИЮ БУДЕТ С 1000) И УКАЗЫВАЕМ ИМЯ
+COPY ./php-fpm.conf /usr/local/etc/php-fpm.conf КОПИРУЕМ ФАЙЛ КОНФИГУРАЦИЙ МЕНЕДЖЕРОВ ПРОЦЕССОВ
+COPY ./php.ini /usr/local/etc/php/php.ini КОПИРУЕМ ФАЙЛ КОНФИГУРАЦИЙ PHP
+COPY ./entrypoint.sh /entrypoint.sh 
+#COPY ./scheduler.sh /scripts/scheduler.sh КОПИРУЕМ СКРИПТОВЫЙ ФАЙЛ КОТОРЫЙ ЯВЛЯЕТСЯ СБОРНИКОМ ПОЛЬЗОВАТЕЛЬСКИХ КОНФИГУРЦИЙ
+RUN chmod 4755 /entrypoint.sh ДАЕМ ПРАВА ВЛАДЕЛЬЦУ ПОЛНОСТЬЮ А ОСТАЛЬНЫМ ТОЛЬКО ЧИТАТЬТ И ВЫПОЛНЯТЬ

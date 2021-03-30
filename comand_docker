@@ -1,0 +1,13 @@
+docker run -it -p3306:3306 --name sql_db -v /home/dev/db:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=12345 mysql
+
+docker run -it --name phpfpm -v /home/dev/pr1/www:/var/www/html bitnami/php-fpm:latest
+
+docker ps -a
+
+docker start
+
+docker stop
+
+docker log
+
+system (demon) 
