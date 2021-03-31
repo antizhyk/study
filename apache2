@@ -31,3 +31,20 @@ reload - В таком случае программа рекомендует с
 Пример заголовка автоизированного пользоваеля Authorization: Basic dXNlcjE6dXNlcjE=
 
 что бы сделать перенаправление ошибочного запроса на файл 404 в .htaccess указываем следующие ErrorDocument 404 /404.html где последнее это путь к файлу
+
+Как сделать удаление файла из кеша, через определенное время
+## EXPIRES CACHING ##
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+ExpiresByType image/gif "access plus 1 month"
+ExpiresByType image/png "access plus 1 month"
+ExpiresByType text/css "access plus 1 month"
+ExpiresByType application/pdf "access plus 1 month"
+ExpiresByType text/x-javascript "access plus 1 month"
+ExpiresByType application/x-shockwave-flash "access plus 1 month"
+ExpiresByType image/x-icon "access plus 1 year"
+ExpiresDefault "access plus 2 days"
+</IfModule>
+## EXPIRES CACHING ##
